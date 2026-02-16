@@ -1,5 +1,5 @@
 {
-  "name": "shop-from-london",
+  "name": "acode.tech-landing-page",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "lucide-react": "^0.554.0"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "lucide-react": "^0.564.0",
+    "framer-motion": "^12.34.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
