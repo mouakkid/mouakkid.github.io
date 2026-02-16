@@ -1,27 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import crypto from 'node:crypto'
+import path from 'path';
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// --- FIX ROBUSTE POUR NODE.JS ---
-// Vite a besoin de crypto.getRandomValues pour démarrer.
-// Certains environnements (comme Codespaces ou Node <19) ne l'ont pas par défaut.
-// On force l'utilisation de la méthode native de Node 'randomFillSync'.
-if (typeof globalThis.crypto === 'undefined') {
-  // @ts-ignore
-  globalThis.crypto = {};
-}
-
-if (typeof globalThis.crypto.getRandomValues === 'undefined') {
-  // @ts-ignore
-  globalThis.crypto.getRandomValues = (arr: any) => {
-    return crypto.randomFillSync(arr);
-  };
-}
-// ----------------------------------
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  // Le base: './' est crucial pour GitHub Pages car le site est souvent dans un sous-dossier
-  base: './', 
-})
+export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, '.', '');
+    return {
+      server: {
+        port: 3000,
+        host: '0.0.0.0',
+      },
+      plugins: [react()],
+      define: {
+        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+      },
+      resolve: {
+        alias: {
+          '@': path.resolve(__dirname, '.'),
+        }
+      }
+    };
+});
