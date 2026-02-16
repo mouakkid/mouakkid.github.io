@@ -2,12 +2,20 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import crypto from 'node:crypto'
 
-// --- FIX COMPATIBILITÉ NODE.JS ---
-// Si la version de Node est ancienne (<19), globalThis.crypto n'existe pas.
-// On l'injecte manuellement pour que Vite puisse démarrer.
-if (!globalThis.crypto) {
+// --- FIX ROBUSTE POUR NODE.JS ---
+// Vite a besoin de crypto.getRandomValues pour démarrer.
+// Certains environnements (comme Codespaces ou Node <19) ne l'ont pas par défaut.
+// On force l'utilisation de la méthode native de Node 'randomFillSync'.
+if (typeof globalThis.crypto === 'undefined') {
   // @ts-ignore
-  globalThis.crypto = crypto.webcrypto;
+  globalThis.crypto = {};
+}
+
+if (typeof globalThis.crypto.getRandomValues === 'undefined') {
+  // @ts-ignore
+  globalThis.crypto.getRandomValues = (arr: any) => {
+    return crypto.randomFillSync(arr);
+  };
 }
 // ----------------------------------
 
