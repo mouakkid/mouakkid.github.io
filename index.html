@@ -1,35 +1,121 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACode.tech | Agence Web & Mobile</title>
-    <meta name="description" content="ACode.tech : Agence digitale experte à Casablanca.">
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030014">
+    
+    <title>ACode.tech Ifrane | Innovation Digitale au cœur de l'Atlas</title>
+    <meta name="description" content="ACode.tech Ifrane : Votre partenaire digital dans la région de l'Atlas. Développement Web, Mobile et Cybersécurité pour les entreprises d'Ifrane, Azrou et Meknès.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              primary: { 500: '#0ea5e9', 600: '#0284c7' },
+            }
+          }
+        }
+      }
+    </script>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            /* Couleur de fond sombre pour correspondre au site et éviter le flash blanc */
-            background-color: #030014; 
-        }
-        iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+      body { background-color: #030014; color: #ffffff; }
+      .bg-noise {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        opacity: 0.03; z-index: -1; pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
     </style>
-</head>
-<body>
-    <iframe 
-        src="https://acode-tech-landing-page-659120368127.us-west1.run.app/" 
-        title="ACode.tech Application" 
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-</body>
+  </head>
+  <body>
+    <div class="bg-noise"></div>
+
+    <!-- Nav Simple -->
+    <nav class="absolute w-full z-50 py-6">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 font-display font-bold text-2xl tracking-tighter">
+          ACode<span class="text-indigo-500">.tech</span> <span class="text-xs bg-white/10 px-2 py-1 rounded ml-2 border border-white/10">Ifrane</span>
+        </a>
+        <a href="mailto:contact@acode.tech" class="px-6 py-2 bg-white text-[#030014] font-semibold rounded-full text-sm hover:bg-indigo-50 transition-colors">
+          Contactez-nous
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <!-- Background Elements representing Atlas/Cold -->
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[120px] mix-blend-screen opacity-50"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[100px] mix-blend-screen opacity-50"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-900/10 text-cyan-300 text-sm font-medium mb-8 backdrop-blur-md">
+            <i data-lucide="mountain-snow" class="w-4 h-4"></i>
+            <span>Pôle Digital Région Atlas</span>
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight mb-8">
+            L'Excellence Numérique <br/>
+            <span class="gradient-text">au sommet de l'Atlas</span>
+          </h1>
+
+          <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+            Nous apportons l'expertise de ACode.tech aux startups, universités et entreprises d'Ifrane. 
+            Développement d'apps, Sécurité et IA, conçus pour l'écosystème local.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-16">
+            <div class="glass-card p-6 rounded-2xl hover:bg-white/5 transition-colors">
+              <i data-lucide="snowflake" class="w-8 h-8 text-cyan-400 mb-4"></i>
+              <h3 class="text-xl font-bold mb-2">Local & Global</h3>
+              <p class="text-gray-400 text-sm">Une présence locale à Ifrane avec les standards de qualité internationaux.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl hover:bg-white/5 transition-colors">
+              <i data-lucide="graduation-cap" class="w-8 h-8 text-indigo-400 mb-4"></i>
+              <h3 class="text-xl font-bold mb-2">Partenaires Éducation</h3>
+              <p class="text-gray-400 text-sm">Solutions numériques adaptées pour le secteur académique et la recherche.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl hover:bg-white/5 transition-colors">
+              <i data-lucide="wifi" class="w-8 h-8 text-pink-400 mb-4"></i>
+              <h3 class="text-xl font-bold mb-2">Smart Tourism</h3>
+              <p class="text-gray-400 text-sm">Digitalisation de l'expérience touristique dans la région.</p>
+            </div>
+          </div>
+
+          <a href="tel:+212661489838" class="inline-flex items-center gap-3 text-xl font-bold hover:text-indigo-400 transition-colors">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+            +212 661 489 838
+          </a>
+          <p class="text-gray-500 text-sm mt-2">Disponible sur Ifrane et Casablanca</p>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-8 border-t border-white/5 text-center text-gray-600 text-sm">
+      <p>&copy; 2024 ACode.tech Ifrane Branch. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
 </html>
